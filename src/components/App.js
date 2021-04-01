@@ -85,9 +85,6 @@ function App() {
             ) : (<div className="main-loader"><h2>Catching Pokemons.... Please wait!</h2>
                 <img className="spinner" src={pokeball} alt="loading"/></div>)}
         </div>
-
-        ) : (<div className="main-loader"><h2>Catching Pokemons.... Please wait!</h2>
-        <img className="spinner" src={pokeball} alt="loading"/></div>)}
     </>
   );
 };

@@ -3,6 +3,7 @@ import "./Pokemon.css";
 import axios from "axios";
 
 const Pokemon = ({name, link}) => {
+
     const [pokemon, setPokemon] = useState({});
     useEffect(() => {
 
