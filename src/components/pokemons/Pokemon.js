@@ -18,7 +18,7 @@ const Pokemon = ({name, link}) => {
         }
         fetchOnePokemon();
 
-    }, []);
+    }, [link]);
 
     // console.log("Plaatje?", pokemon.sprites?.front_default);
     // console.log("MOVES", pokemon.moves?.length);
@@ -34,7 +34,7 @@ const Pokemon = ({name, link}) => {
             {/*<p>{pokemon.abilities && pokemon.abilities[0].ability.name}</p>*/}
             {pokemon.abilities && pokemon.abilities.map((ability) => {
                     // console.log("move", ability);
-                return <p>{ability.ability.name}</p>
+                return <p key={ability.ability.name}>{ability.ability.name}</p>
             }
             )}
         </li>

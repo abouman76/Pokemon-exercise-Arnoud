@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from "axios";
 import Pokemon from "./pokemons/Pokemon";
+import pokeball from "../assets/pokeball.gif";
 
 function App() {
     const [pokemons, setPokemons] = useState([]);
-    const [error, setError] = useState();
+    const [error, setError] = useState(false);
     const [currentUrl, setCurrentUrl] = useState(`https://pokeapi.co/api/v2/pokemon/`);
     const [nextUrl, setNextUrl] = useState(null);
     const [previousUrl, setPreviousUrl] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     // console.log("NextURL?", nextUrl);
     // console.log("CurrentURL", currentUrl);
@@ -23,6 +25,10 @@ function App() {
     }
 
     useEffect(() => {
+        setTimeout(() => setLoading(false), 2000)
+    }, [])
+
+    useEffect(() => {
         async function fetchPokemon() {
             try {
                 const {data} = await axios.get(currentUrl);
@@ -31,9 +37,9 @@ function App() {
                 setPreviousUrl(data.previous);
                 setPokemons(data.results);
 
-            } catch (error) {
-                setError("Sorry, something went wrong. Try again!")
-                console.error(error);
+            } catch(error) {
+                // console.log("ERROR", error)
+                setError(true)
             }
         }
         fetchPokemon();
@@ -61,8 +67,10 @@ function App() {
             </button>
         </div>
 
+        {loading === false ? (
         <div>
-            {/*{error & <span>{error}</span>}*/}
+
+            {error && <h2>Something went wrong. Please try Again!</h2>}
 
             <ul className="main-card">
 
@@ -75,8 +83,11 @@ function App() {
             </ul>
         </div>
 
+        ) : (<div className="main-loader"><h2>Catching Pokemons.... Please wait!</h2>
+        <img className="spinner" src={pokeball} alt="loading"/></div>)}
+
     </>
   );
-}
+};
 
 export default App;
