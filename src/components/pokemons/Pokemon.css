@@ -1,0 +1,25 @@
+/** {*/
+/*    border: 1px solid red;*/
+/*}*/
+
+.styling-pokemonCard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid darkblue;
+    width: 200px;
+    height: 300px;
+    color: darkblue;
+
+}
+
+.styling-pokemonCard p {
+    background-color: lightgray;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px 5px 15px;
+}
+

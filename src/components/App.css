@@ -2,4 +2,48 @@
 /*    border: 1px solid red;*/
 /*}*/
 
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.main-container li {
+    background-color: white;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    margin: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /*flex-wrap: nowrap;*/
+}
+
+.btn-homepage {
+    background-color: darkblue;
+    color: #ffc300;
+    padding: 5px;
+    width: 20%;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+}
+
+.btn-homepage:disabled {
+    background-color: gray;
+}
+
+@media screen and (max-width: 576px) {
+    .buttons {
+        flex-direction: column;
+    }
+
+    .btn-homepage {
+        margin: 10px;
+    }
+}
