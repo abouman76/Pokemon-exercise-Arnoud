@@ -2,14 +2,14 @@ import React, {useEffect, useState} from "react";
 import "./Pokemon.css";
 import axios from "axios";
 
-const Pokemon = (props) => {
+const Pokemon = ({name, link}) => {
     const [pokemon, setPokemon] = useState({});
     useEffect(() => {
 
         async function fetchOnePokemon(){
            // console.log("Ophalen", props.link);
             try {
-                const response = await axios.get(props.link);
+                const response = await axios.get(link);
                 // console.log("response", response.data)
                 setPokemon(response.data)
 
@@ -27,7 +27,7 @@ const Pokemon = (props) => {
 
     return (
         <li className="styling-pokemonCard">
-            <h3>{props.name.toUpperCase()}</h3>
+            <h3>{name.toUpperCase()}</h3>
             <h4>Moves: {pokemon.moves?.length}</h4>
             {/*<h4>Moves: {pokemon.moves && pokemon.moves.length} </h4>*/}
             <h4>Weight: {pokemon.weight}</h4>
