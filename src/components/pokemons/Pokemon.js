@@ -7,7 +7,6 @@ const Pokemon = ({name, link}) => {
     useEffect(() => {
 
         async function fetchOnePokemon(){
-           // console.log("Ophalen", props.link);
             try {
                 const response = await axios.get(link);
                 // console.log("response", response.data)
@@ -22,7 +21,6 @@ const Pokemon = ({name, link}) => {
     }, []);
 
     // console.log("Plaatje?", pokemon.sprites?.front_default);
-    // console.log("PROPS", props);
     // console.log("MOVES", pokemon.moves?.length);
 
     return (

@@ -5,6 +5,7 @@ import Pokemon from "./pokemons/Pokemon";
 
 function App() {
     const [pokemons, setPokemons] = useState([]);
+    const [error, setError] = useState();
     const [currentUrl, setCurrentUrl] = useState(`https://pokeapi.co/api/v2/pokemon/`);
     const [nextUrl, setNextUrl] = useState(null);
     const [previousUrl, setPreviousUrl] = useState(null);
@@ -31,6 +32,7 @@ function App() {
                 setPokemons(data.results);
 
             } catch (error) {
+                setError("Sorry, something went wrong. Try again!")
                 console.error(error);
             }
         }
@@ -41,33 +43,38 @@ function App() {
     // console.log("LIJN 23", pokemons);
   return (
     <>
-    <div className="buttons">
-        <button
-            className="btn-homepage"
-            type="button"
-            onClick={showPreviousPage}
-            disabled={previousUrl === null}
-        > Vorige
-        </button>
+        <div className="buttons">
+            <button
+                className="btn-homepage"
+                type="button"
+                onClick={showPreviousPage}
+                disabled={previousUrl === null}
+                > Previous
+            </button>
 
-        <button
-            className="btn-homepage"
-            type="button"
-            onClick={showNextPage}
-            disabled={nextUrl === null}
-        >Volgende
-        </button>
-    </div>
+            <button
+                className="btn-homepage"
+                type="button"
+                onClick={showNextPage}
+                disabled={nextUrl === null}
+                >Next
+            </button>
+        </div>
 
-    <ul className="main-container">
+        <div>
+            {/*{error & <span>{error}</span>}*/}
 
-        {pokemons && pokemons.map((pokemon) => {
-                // console.log("1 Pok", pokemon);
-            return <Pokemon key={pokemon.name} name={pokemon.name}
-                            link={pokemon.url}/>
-            }
-        )};
-    </ul>
+            <ul className="main-card">
+
+                {pokemons && pokemons.map((pokemon) => {
+                        // console.log("1 Pok", pokemon);
+                        return <Pokemon key={pokemon.name} name={pokemon.name}
+                                        link={pokemon.url}/>
+                    }
+                )};
+            </ul>
+        </div>
+
     </>
   );
 }
