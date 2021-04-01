@@ -67,25 +67,27 @@ function App() {
             </button>
         </div>
 
-        {loading === false ? (
         <div>
 
             {error && <h2>Something went wrong. Please try Again!</h2>}
 
-            <ul className="main-card">
+            {loading === false ? (
 
-                {pokemons && pokemons.map((pokemon) => {
+                <ul className="main-card">
+                    {pokemons && pokemons.map((pokemon) => {
                         // console.log("1 Pok", pokemon);
                         return <Pokemon key={pokemon.name} name={pokemon.name}
                                         link={pokemon.url}/>
-                    }
-                )};
-            </ul>
+                        }
+                    )};
+                </ul>
+
+            ) : (<div className="main-loader"><h2>Catching Pokemons.... Please wait!</h2>
+                <img className="spinner" src={pokeball} alt="loading"/></div>)}
         </div>
 
         ) : (<div className="main-loader"><h2>Catching Pokemons.... Please wait!</h2>
         <img className="spinner" src={pokeball} alt="loading"/></div>)}
-
     </>
   );
 };
