@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffc300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    min-width: 550px;
+}
+
